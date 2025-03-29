@@ -1,0 +1,330 @@
+\doxysection{/mnt/c/\+Users/\+Rui Barbosa/\+One\+Drive -\/ Instituto Politécnico do Cávado e do Ave/\+Ambiente de Trabalho/\+EDA/\+TP/funcoes.c}
+\hypertarget{funcoes_8c_source}{}\label{funcoes_8c_source}\mbox{\hyperlink{funcoes_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00013}00013\ \textcolor{preprocessor}{\ \#include\ "{}\mbox{\hyperlink{funcoes_8h}{funcoes.h}}"{}}\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00014}00014\ \textcolor{preprocessor}{\ \#include\ <stdio.h>}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00015}00015\ \textcolor{preprocessor}{\ \#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00017}00017\ \ \textcolor{keywordtype}{int}\ linhas=1\ ,\ colunas=0;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00028}\mbox{\hyperlink{funcoes_8c_a45d602813bfa39b2875ba12549e962c5}{00028}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_a45d602813bfa39b2875ba12549e962c5}{criarAntena}}(\textcolor{keywordtype}{char}\ freq,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *nova\ =\ (\mbox{\hyperlink{structAntena}{Antena}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structAntena}{Antena}}));\ \textcolor{comment}{//\ aloca\ memoria\ para\ uma\ nova\ variavel\ do\ tipo\ antena\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nova\ ==\ NULL)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifica\ se\ alocou\ corretamente\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro\ ao\ alocar\ memória!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ retorna\ Null\ se\ nao\ foi\ bem\ sucessida\ a\ operacao\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>frequencia\ =\ freq;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ o\ valor\ da\ frequencia\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>x\ =\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ a\ coordenada\ de\ x\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>y\ =\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ a\ coordenda\ de\ y\ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>proximo\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ NULL\ ao\ proximo\ ponteiro\ para\ ser\ usado\ numa\ lista\ ligada\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nova;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00048}\mbox{\hyperlink{funcoes_8c_a14cc341d59620a75372f5c70ffd537ae}{00048}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_a14cc341d59620a75372f5c70ffd537ae}{procuraAntena}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux\ =\ Iniciolista;\ \textcolor{comment}{//\ Ponteiro\ auxiliar\ para\ percorrer\ a\ lista}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{while}\ (aux\ \&\&\ (aux-\/>x\ <\ x\ ||\ (aux-\/>x\ ==\ x\ \&\&\ aux-\/>y\ <\ y)))\ \{\ \textcolor{comment}{//\ enquanto\ aux\ nao\ for\ Null\ e\ as\ coodenadas\ forem\ inferiores\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ aux\ =\ aux-\/>proximo;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Avança\ na\ lista\ enquanto\ os\ valores\ forem\ menores}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aux\ \&\&\ aux-\/>x\ ==\ x\ \&\&\ aux-\/>y\ ==\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aux;\ \textcolor{comment}{//\ Antena\ encontrada}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Antena\ não\ encontrada}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00068}\mbox{\hyperlink{funcoes_8c_ac8ebff5bda1157baac424e2ffb11a8ad}{00068}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_ac8ebff5bda1157baac424e2ffb11a8ad}{inserirAntena}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\ \textcolor{keywordtype}{char}\ frequencia,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *nova\ =\ \mbox{\hyperlink{funcoes_8c_a45d602813bfa39b2875ba12549e962c5}{criarAntena}}(frequencia,\ x,\ y);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00070}00070\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nova==NULL)\{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ nova\ nao\ estiver\ apontar\ para\ NULL}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;\textcolor{comment}{//\ ele\ devolve\ a\ lista\ sem\ alterar}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nova\ -\/>frequencia\ ==\ \textcolor{charliteral}{'.'}\ ||\ nova-\/>frequencia==\textcolor{charliteral}{'\(\backslash\)n'}\ )\{\ \textcolor{comment}{//\ nao\ insere\ os\ '.'\ na\ lista\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{funcoes_8c_a14cc341d59620a75372f5c70ffd537ae}{procuraAntena}}(Iniciolista,x,y))\ \textcolor{keywordflow}{return}\ Iniciolista;\textcolor{comment}{//\ se\ ja\ estiver\ uma\ na\ mesma\ posicao\ da\ return\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ a\ lista\ está\ vazia\ ou\ a\ nova\ antena\ deve\ ser\ a\ primeira}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Iniciolista\ ==\ NULL\ ||\ x\ <\ Iniciolista-\/>x\ ||\ (x\ ==\ Iniciolista-\/>x\ \&\&\ y\ <\ Iniciolista-\/>y))\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>proximo\ =\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nova;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *aux1\ =\ Iniciolista;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *aux2\ =\ Iniciolista-\/>proximo;\ \ \ \textcolor{comment}{//\ Percorrer\ a\ lista\ para\ encontrar\ a\ posição\ correta}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux2\ !=\ NULL\ \&\&\ (x\ >\ aux2-\/>x\ ||\ (x\ ==\ aux2-\/>x\ \&\&\ y\ >\ aux2-\/>y))\ )\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1\ =\ aux2;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux2\ =\ aux2-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1-\/>proximo\ =\ nova;\ \ \ \ \ \textcolor{comment}{//\ Insere\ a\ nova\ antena\ \ na\ posição\ correta}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>proximo\ =\ aux2;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00100}\mbox{\hyperlink{funcoes_8c_af39935e9376bc0641478aeee6d2a1fcf}{00100}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_af39935e9376bc0641478aeee6d2a1fcf}{criaMapa}}(\textcolor{keywordtype}{char}*\ nomeficheiro,\ \mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00101}00101\ \ \ \ \ FILE*\ ficheiro\ =\ fopen(nomeficheiro,\ \textcolor{stringliteral}{"{}r"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ abre\ o\ ficheiro\ para\ leitura}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ficheiro\ ==\ NULL)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifca\ se\ o\ ficheiro\ existe\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro\ ao\ abrir\ ficheiro\ \%s\(\backslash\)n"{}},\ nomeficheiro);\ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00107}00107\ \ \ \ \ \textcolor{keywordtype}{int}\ c\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00108}00108\ \ \ \ \textcolor{keywordflow}{while}\ ((c\ =\ fgetc(ficheiro))\ !=\ EOF)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enquanto\ nao\ encontrar\ o\ final\ do\ ficheiro\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ linhas++;\ \ \ \ \ \ \textcolor{comment}{//\ quando\ chega\ ao\ final\ da\ linha\ ,\ aumenta\ o\ numero\ de\ linhas}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ colunas\ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00113}00113\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ colunas++;\ \ \ \ \ \ \textcolor{comment}{//\ faz\ a\ contagem\ das\ colunas\ que\ temos\ no\ ficheiro\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ !=\ \textcolor{charliteral}{'.'})\ \{\ \textcolor{keywordflow}{if}\ ((c\ >=\ \textcolor{charliteral}{'A'}\ \&\&\ c\ <=\ \textcolor{charliteral}{'Z'})\ ||\ (c\ >=\ \textcolor{charliteral}{'a'}\ \&\&\ c\ <=\ \textcolor{charliteral}{'z'})\ ||\ (c\ >=\ \textcolor{charliteral}{'0'}\ \&\&\ c\ <=\ \textcolor{charliteral}{'9'}))\ \{\ \ \textcolor{comment}{//\ Apenas\ lê\ antenas\ (letras\ maiúsculas)}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Iniciolista\ =\ \mbox{\hyperlink{funcoes_8c_ac8ebff5bda1157baac424e2ffb11a8ad}{inserirAntena}}(Iniciolista,\ c,\ linhas,\ colunas);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00119}00119\ \ \ \ \ \}\}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00121}00121\ \ \ \ \ fclose(ficheiro);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00129}\mbox{\hyperlink{funcoes_8c_ad5ad8449d8e9c17086eecd7182fee2fe}{00129}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcoes_8c_ad5ad8449d8e9c17086eecd7182fee2fe}{exibirLista}}(\mbox{\hyperlink{structAntena}{Antena}}\ *Iniciolista)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00130}00130\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *aux\ =\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Frequência:\ \%c\ |\ Posição:\ (\%d,\ \%d)\(\backslash\)n"{}},\ aux-\/>frequencia,\ aux-\/>x,\ aux-\/>y);\ \textcolor{comment}{//\ mostra\ a\ frequencia\ e\ as\ coordenadas\ de\ cada\ antena\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ aux\ =\ aux-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00141}\mbox{\hyperlink{funcoes_8c_aa41ff1c52299f6ee1d913d7e71083a7f}{00141}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcoes_8c_aa41ff1c52299f6ee1d913d7e71083a7f}{limparMemoria}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux\ =\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux1\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux)\ \ \ \ \ \ \ \textcolor{comment}{//\ enquanto\ aux\ for\ diferente\ de\ nulo\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{aux1\ =\ aux-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(aux);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux\ =\ aux1;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00157}\mbox{\hyperlink{funcoes_8c_aca81817473cf7f9bae040a3d1b5bc7a7}{00157}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_aca81817473cf7f9bae040a3d1b5bc7a7}{imprimirListaNoficheiro}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nomeFicheiro)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00158}00158\ \ \ \ \ FILE*\ ficheiro\ =\ fopen(\textcolor{stringliteral}{"{}listaligada.bin"{}},\ \textcolor{stringliteral}{"{}wb"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ abre\ o\ ficheiro\ para\ leitura\ e\ escrita\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ficheiro\ ==\ NULL)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifica\ se\ o\ ficheiro\ existe\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro\ ao\ abrir\ o\ ficheiro\ binário\ \%s\(\backslash\)n"{}},\ nomeFicheiro);\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux\ =\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}}\ aux1;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enquanto\ aux\ nao\ for\ nulo\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1.frequencia=aux-\/>frequencia;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ os\ respetivos\ valores\ de\ cada\ antena\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1.x=aux-\/>x;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1.y=aux-\/>y;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fwrite(\&aux1,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}}),\ 1,\ ficheiro);\ \ \ \textcolor{comment}{//\ escreve\ no\ ficheiro\ informacao\ de\ cada\ antena\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux\ =\ aux-\/>proximo;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(ficheiro);\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00182}\mbox{\hyperlink{funcoes_8c_af0cded30d2080714d9b3fd06bea7c12b}{00182}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_af0cded30d2080714d9b3fd06bea7c12b}{lerListaNoFicheiro}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nomeFicheiro)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00183}00183\ \ \ \ \ FILE*\ ficheiro\ =\ fopen(nomeFicheiro,\ \textcolor{stringliteral}{"{}rb"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ abre\ o\ ficheiro\ binario\ em\ modo\ de\ leitura\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ficheiro\ ==\ NULL)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifica\ se\ ele\ existe\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro\ ao\ abrir\ o\ ficheiro\ binário\ \%s\(\backslash\)n"{}},\ nomeFicheiro);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ inicioLista\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}}\ aux1;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fread(\&aux1,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}}),\ 1,\ ficheiro)\ ==\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ le\ uma\ antena\ de\ cada\ vez\ atras\ do\ ficheiro\ binario\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inicioLista\ =\ \mbox{\hyperlink{funcoes_8c_ac8ebff5bda1157baac424e2ffb11a8ad}{inserirAntena}}(inicioLista,\ aux1.frequencia,\ aux1.x,\ aux1.y);\ \ \textcolor{comment}{//\ insere\ os\ dados\ lidos\ na\ lista\ das\ antenas}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(ficheiro);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inicioLista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00205}\mbox{\hyperlink{funcoes_8c_ad228db92a01e3548fa9c8b098c21b3f7}{00205}}\ \mbox{\hyperlink{structAntena}{Antena}}*\ \mbox{\hyperlink{funcoes_8c_ad228db92a01e3548fa9c8b098c21b3f7}{removerAntena}}(\ \mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista\ ,\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{if}(Iniciolista\ ==\ NULL\ )\{\ \ \ \ \ \ \ \textcolor{comment}{//\ se\ a\ lista\ estiver\ vazia\ retorna\ a\ lista}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(Iniciolista-\/>x==x\ \&\&\ Iniciolista-\/>y==y)\{\ \ \textcolor{comment}{//\ se\ a\ antena\ que\ queremos\ remover\ for\ a\ primeira\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux=\ Iniciolista;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ o\ inicio\ da\ lista\ passa\ a\ ser\ a\ segunda\ antena\ da\ lista\ e\ liberta\ memoria\ da\ antena\ removida}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ Iniciolista\ =\ Iniciolista-\/>proximo;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ free(aux);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux1\ =\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux2\ =\ aux1;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux1\ \&\&\ (aux1-\/>x\ !=\ x\ ||\ aux1-\/>y\ !=\ y))\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux2=aux1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ passa\ o\ aux2\ para\ a\ posicao\ do\ aux1}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1=aux1-\/>proximo;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ avanca\ a\ posicao\ do\ aux1\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aux1!=NULL)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux2-\/>proximo\ =\ aux1-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(aux1);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ elimina\ da\ lista\ a\ antena\ que\ queriamos\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00237}\mbox{\hyperlink{funcoes_8c_a09b5b153bebcb9912ee6ccf2dd1414e7}{00237}}\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ \mbox{\hyperlink{funcoes_8c_a09b5b153bebcb9912ee6ccf2dd1414e7}{criaEfeitoNefasto}}(\textcolor{keywordtype}{int}\ x\ ,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{structAntena}{Antena}}*\ primeiracausa\ ,\ \mbox{\hyperlink{structAntena}{Antena}}*\ segundacausa\ )\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00239}00239\ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}\ *novo\ =\ (\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}));\ \textcolor{comment}{//\ aloca\ memoria\ para\ uma\ nova\ variavel\ de\ efeito\ nefasto\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{if}\ (novo\ ==\ NULL)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifica\ se\ alocou\ corretamente\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00241}00241\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro\ ao\ alocar\ memória!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ retorna\ Null\ se\ nao\ foi\ bem\ sucessida\ a\ operacao\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ novo-\/>x\ =\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ a\ coordenada\ de\ x\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ novo-\/>y\ =\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ a\ coordenda\ de\ y\ \ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ novo-\/>causaDoefeito[0]\ =\ \ primeiracausa;\ \ \ \ \textcolor{comment}{//\ recebe\ a\ primera\ antena\ que\ causou\ o\ efeito\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ novo-\/>causaDoefeito[1]\ =\ segundacausa;\ \ \ \ \ \ \textcolor{comment}{//\ recebe\ a\ segunda\ antena\ que\ causou\ o\ efeito\ \ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ novo-\/>proximo\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ atribui\ NULL\ ao\ proximo\ ponteiro\ para\ ser\ usado\ numa\ lista\ ligada\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ novo;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00251}00251\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00259}\mbox{\hyperlink{funcoes_8c_a082916aa5c9a98bb972dc85a9982b11c}{00259}}\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ \mbox{\hyperlink{funcoes_8c_a082916aa5c9a98bb972dc85a9982b11c}{inserirOrdenadoEfeitoNefasto}}(\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito,\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ nova\ )\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00260}00260\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00261}00261\ \ \ \ \ \textcolor{keywordflow}{if}\ (!nova)\{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ nova\ nao\ estiver\ apontar\ para\ NULL}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IniciolistaEfeito;\textcolor{comment}{//\ Se\ houver\ erro\ na\ alocação,\ retornamos\ a\ lista\ sem\ alteração}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ a\ lista\ está\ vazia\ ou\ a\ nova\ antena\ deve\ ser\ a\ primeira}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IniciolistaEfeito\ ==\ NULL\ ||\ nova-\/>x\ <\ IniciolistaEfeito-\/>x\ ||\ (nova-\/>x\ ==\ IniciolistaEfeito-\/>x\ \&\&\ nova-\/>y\ <\ IniciolistaEfeito-\/>y))\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>proximo\ =\ IniciolistaEfeito;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nova;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ aux1\ =\ IniciolistaEfeito;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Percorrer\ a\ lista\ para\ encontrar\ a\ posição\ correta}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ aux2\ =\ IniciolistaEfeito-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux2\ !=\ NULL\ \&\&\ (nova-\/>x\ >\ aux2-\/>x\ ||\ (nova-\/>x\ ==\ aux2-\/>x\ \&\&\ nova-\/>y\ >\ aux2-\/>y))\ )\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1\ =\ aux2;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux2\ =\ aux2-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux1-\/>proximo\ =\ nova;\ \ \ \ \ \textcolor{comment}{//\ Insere\ a\ nova\ antena\ \ na\ posição\ correta}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nova-\/>proximo\ =\ aux2;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IniciolistaEfeito;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00279}00279\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00287}\mbox{\hyperlink{funcoes_8c_a0f79a8128b3ef6953884367b9e4e1799}{00287}}\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ \mbox{\hyperlink{funcoes_8c_a0f79a8128b3ef6953884367b9e4e1799}{calcularEfeitoNefasto}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolisIniciolistaEfeito)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00288}00288\ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux1\ =\ Iniciolista;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00289}00289\ \ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux2\ =\ Iniciolista-\/>proximo;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ diferencaX,\ diferencaY;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(aux1)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enquanto\ o\ aux1\ nao\ for\ nulo\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ aux2\ =\ aux1-\/>proximo;\ \ \ \ \textcolor{comment}{//\ axu2\ vai\ estar\ sempre\ uma\ casa\ a\ frente\ do\ aux1}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(aux2)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enquanto\ o\ aux2\ nao\ for\ nulo}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux1-\/>frequencia\ ==\ aux2-\/>frequencia)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diferencaX=(aux2-\/>x\ -\/\ aux1-\/>x);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ calcular\ a\ diferenca\ dos\ x\ (linhas)}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diferencaY=abs(aux2-\/>y\ -\/\ aux1-\/>y);\ \ \ \ \ \ \textcolor{comment}{//\ Calcular\ a\ diferenca\ dos\ y\ (colunas)}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux1-\/>y<aux2-\/>y)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ o\ y\ da\ primera\ antena\ encontrada\ for\ menor\ que\ o\ y\ da\ segunda\ antena\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux2-\/>y+diferencaY<=colunas\ \&\&\ aux2-\/>x+diferencaX<=linhas)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IniciolisIniciolistaEfeito=\mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{criaInsereEfeitoNefasto}}(IniciolisIniciolistaEfeito,aux2-\/>x+diferencaX,aux2-\/>y+diferencaY,aux1,aux2);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux1-\/>y-\/diferencaY>0\ \&\&\ aux1-\/>x-\/diferencaX>0)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IniciolisIniciolistaEfeito=\mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{criaInsereEfeitoNefasto}}(IniciolisIniciolistaEfeito,aux1-\/>x-\/diferencaX,aux1-\/>y-\/diferencaY,aux1,aux2);\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aux2-\/>y-\/diferencaY>0\ \&\&\ aux2-\/>x+diferencaX<=linhas)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IniciolisIniciolistaEfeito=\mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{criaInsereEfeitoNefasto}}(IniciolisIniciolistaEfeito,aux2-\/>x+diferencaX,aux2-\/>y-\/diferencaY,aux1,aux2);\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux1-\/>y+diferencaY<=colunas\ \&\&\ aux1-\/>x-\/diferencaX>0)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IniciolisIniciolistaEfeito=\mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{criaInsereEfeitoNefasto}}(IniciolisIniciolistaEfeito,aux1-\/>x-\/diferencaX,aux1-\/>y+diferencaY,aux1,aux2);\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux2\ =\ aux2-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ aux1\ =\ aux1-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00319}00319\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00320}00320\ \ \ \ \ \ \textcolor{keywordflow}{return}\ IniciolisIniciolistaEfeito;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00321}00321\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00332}\mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{00332}}\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ \mbox{\hyperlink{funcoes_8c_a0d04a87299c850f40d81c0d017de586f}{criaInsereEfeitoNefasto}}(\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito,\ \textcolor{keywordtype}{int}\ x\ ,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{structAntena}{Antena}}*\ primeiracausa\ ,\ \mbox{\hyperlink{structAntena}{Antena}}*\ segundacausa\ )\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00333}00333\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{funcoes_8c_a082916aa5c9a98bb972dc85a9982b11c}{inserirOrdenadoEfeitoNefasto}}(IniciolistaEfeito,\mbox{\hyperlink{funcoes_8c_a09b5b153bebcb9912ee6ccf2dd1414e7}{criaEfeitoNefasto}}(x,y,primeiracausa,segundacausa));}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00334}00334\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00340}\mbox{\hyperlink{funcoes_8c_a3640123ce16dfb357174173e06225153}{00340}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcoes_8c_a3640123ce16dfb357174173e06225153}{limparMemoriaEfeitoNefasto}}(\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00341}00341\ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ aux\ =\ IniciolistaEfeito;\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00342}00342\ \ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ aux1\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (aux)\ \ \ \ \ \ \ \textcolor{comment}{//enquanto\ aux\ for\ diferente\ de\ null\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{aux1\ =\ aux-\/>proximo;\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(aux);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aux\ =\ aux1;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00355}\mbox{\hyperlink{funcoes_8c_afcbae3699b127f728daf26fd48eca943}{00355}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcoes_8c_afcbae3699b127f728daf26fd48eca943}{apresentaMapaComEfeito}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00356}00356\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n===\ Lista\ de\ Antenas\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00357}00357\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ auxAntena\ =\ Iniciolista;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (auxAntena\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Antena\ -\/>\ Frequência:\ \%c\ |\ Posição:\ (\%d,\ \%d)\(\backslash\)n"{}},\ \ \ \ \ \textcolor{comment}{//\ apresenta\ todas\ as\ antenas\ ate\ chegar\ ao\ final\ da\ lista}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ auxAntena-\/>frequencia,\ auxAntena-\/>x,\ auxAntena-\/>y);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ auxAntena\ =\ auxAntena-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00362}00362\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n===\ Efeitos\ Nefastos\ Detectados\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ auxEfeito\ =\ IniciolistaEfeito;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (auxEfeito\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Efeito\ Nefasto\ -\/>\ Posição:\ (\%d,\ \%d)\ |\ Causado\ por\ antenas:\ (\%d,\ \%d)\ e\ (\%d,\ \%d)\(\backslash\)n"{}},\ \textcolor{comment}{//\ apresenta\ todos\ os\ efeitos\ nefastos\ e\ as\ antenas\ que\ o\ causaram\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxEfeito-\/>x,\ auxEfeito-\/>y,\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxEfeito-\/>causaDoefeito[0]-\/>x,\ auxEfeito-\/>causaDoefeito[0]-\/>y,}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxEfeito-\/>causaDoefeito[1]-\/>x,\ auxEfeito-\/>causaDoefeito[1]-\/>y);}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxEfeito\ =\ auxEfeito-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00371}00371\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00372}00372\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00379}\mbox{\hyperlink{funcoes_8c_a305694b49c90a1985e09f1a301e5dca2}{00379}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcoes_8c_a305694b49c90a1985e09f1a301e5dca2}{Mostrarmapafinal}}(\mbox{\hyperlink{structAntena}{Antena}}*\ Iniciolista,\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00380}00380\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}*\ aux1=Iniciolista;\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00381}00381\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=1;\ i<=linhas\ ;\ i++)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//percorre\ as\ linhas}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=1\ ;\ j<=colunas\ ;\ j++)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ percorre\ as\ colunas}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(aux1\ \&\&\ aux1-\/>x==i\ \&\&\ aux1-\/>y==j)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verifica\ se\ ha\ uma\ antena\ nesta\ posicap\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{funcoes_8c_ab8974ce6a0382d5efc4546a6b6ccaaac}{procuraEfeito}}(IniciolistaEfeito,i,j)!=NULL)\ \{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ varifica\ se\ ha\ um\ efeito\ nefasto\ na\ mesma\ posicao\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[0;31m\%c\(\backslash\)033[0m"{}},aux1-\/>frequencia);\ \ \ \ \ \textcolor{comment}{//\ se\ houver\ efeito\ nefasto\ na\ mesma\ posicao\ que\ uma\ antena\ ele\ pinta\ o\ simbolo\ da\ antena\ de\ VERMELHO\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c"{}},\ aux1-\/>frequencia);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ adiciona\ a\ antena\ nas\ respetivas\ coordenadas}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00388}00388\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00389}00389\ \ \ \ \ aux1=aux1-\/>proximo;}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00390}00390\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00391}00391\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{funcoes_8c_ab8974ce6a0382d5efc4546a6b6ccaaac}{procuraEfeito}}(IniciolistaEfeito,i,j)!=NULL)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ encontrar\ efeito\ nefasto\ coloca\ "{}\#"{}}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\#"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00394}00394\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}."{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ se\ nao\ encontrar\ antena\ nem\ efeito\ adiciona\ "{}."{}}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00396}00396\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00397}00397\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00398}00398\ \ \ \ \ \textcolor{keywordflow}{if}(j==colunas)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quando\ acabar\ a\ linha\ ,\ passa\ para\ a\ linha\ abaixo\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00399}00399\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00401}00401\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00402}00402\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00403}00403\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00412}\mbox{\hyperlink{funcoes_8c_ab8974ce6a0382d5efc4546a6b6ccaaac}{00412}}\ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ \mbox{\hyperlink{funcoes_8c_ab8974ce6a0382d5efc4546a6b6ccaaac}{procuraEfeito}}(\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito,\textcolor{keywordtype}{int}\ x,\textcolor{keywordtype}{int}\ y)\{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00413}00413\ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ aux1\ =\ IniciolistaEfeito;\ \textcolor{comment}{//\ Ponteiro\ auxiliar\ para\ percorrer\ a\ lista}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00415}00415\ \ \ \ \ \textcolor{keywordflow}{while}\ (aux1)\ \{\ \textcolor{comment}{//\ enquanto\ aux\ nao\ for\ Null\ e\ as\ coodenadas\ forem\ inferiores\ }}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aux1-\/>x\ ==\ x\ \&\&\ aux1-\/>y\ ==\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aux1;\ \textcolor{comment}{//\ Antena\ encontrada}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00418}00418\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00419}00419\ \ \ \ \ aux1\ =\ aux1-\/>proximo;\ \textcolor{comment}{//\ Avança\ na\ lista\ enquanto\ os\ valores\ forem\ menores}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00420}00420\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Antena\ não\ encontrada}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00422}00422\ \}}
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00435}00435\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00445}00445\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00446}00446\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00450}00450\ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00451}00451\ \ }
+\DoxyCodeLine{\Hypertarget{funcoes_8c_source_l00452}00452\ }
+
+\end{DoxyCode}

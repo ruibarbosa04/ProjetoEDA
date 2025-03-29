@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['calcularefeitonefasto_0',['calcularefeitonefasto',['../funcoes_8c.html#a0f79a8128b3ef6953884367b9e4e1799',1,'calcularEfeitoNefasto(Antena *Iniciolista, EfeitoNefasto *IniciolisIniciolistaEfeito):&#160;funcoes.c'],['../funcoes_8h.html#a0f79a8128b3ef6953884367b9e4e1799',1,'calcularEfeitoNefasto(Antena *Iniciolista, EfeitoNefasto *IniciolisIniciolistaEfeito):&#160;funcoes.c']]],
+  ['criaefeitonefasto_1',['criaefeitonefasto',['../funcoes_8c.html#a09b5b153bebcb9912ee6ccf2dd1414e7',1,'criaEfeitoNefasto(int x, int y, Antena *primeiracausa, Antena *segundacausa):&#160;funcoes.c'],['../funcoes_8h.html#a09b5b153bebcb9912ee6ccf2dd1414e7',1,'criaEfeitoNefasto(int x, int y, Antena *primeiracausa, Antena *segundacausa):&#160;funcoes.c']]],
+  ['criainsereefeitonefasto_2',['criainsereefeitonefasto',['../funcoes_8c.html#a0d04a87299c850f40d81c0d017de586f',1,'criaInsereEfeitoNefasto(EfeitoNefasto *IniciolistaEfeito, int x, int y, Antena *primeiracausa, Antena *segundacausa):&#160;funcoes.c'],['../funcoes_8h.html#a0d04a87299c850f40d81c0d017de586f',1,'criaInsereEfeitoNefasto(EfeitoNefasto *IniciolistaEfeito, int x, int y, Antena *primeiracausa, Antena *segundacausa):&#160;funcoes.c']]],
+  ['criamapa_3',['criamapa',['../funcoes_8c.html#af39935e9376bc0641478aeee6d2a1fcf',1,'criaMapa(char *nomeficheiro, Antena *Iniciolista):&#160;funcoes.c'],['../funcoes_8h.html#a0124c1efb7e7c60b974f8225137f8c35',1,'criaMapa(char *ficheiro, Antena *Iniciolista):&#160;funcoes.c']]],
+  ['criarantena_4',['criarantena',['../funcoes_8c.html#a45d602813bfa39b2875ba12549e962c5',1,'criarAntena(char freq, int x, int y):&#160;funcoes.c'],['../funcoes_8h.html#ac8a249fc282e0ebf886c7fd6344d3122',1,'criarAntena(char frequencia, int x, int y):&#160;funcoes.c']]]
+];

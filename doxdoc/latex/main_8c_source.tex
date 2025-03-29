@@ -1,0 +1,58 @@
+\doxysection{/mnt/c/\+Users/\+Rui Barbosa/\+One\+Drive -\/ Instituto Politécnico do Cávado e do Ave/\+Ambiente de Trabalho/\+EDA/\+TP/main.c}
+\hypertarget{main_8c_source}{}\label{main_8c_source}\mbox{\hyperlink{main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00012}00012\ \textcolor{preprocessor}{\ \#include\ "{}\mbox{\hyperlink{funcoes_8h}{funcoes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00013}00013\ \textcolor{preprocessor}{\ \#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00014}00014\ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00015}00015\ \ \textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{structAntena}{Antena}}\ *Iniciolista\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ IniciolistaEfeito\ =\ NULL;\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00018}00018\ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Criar\ mapa\ a\ partir\ do\ ficheiro}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020\ \ \ \ \ Iniciolista\ =\ \mbox{\hyperlink{funcoes_8c_af39935e9376bc0641478aeee6d2a1fcf}{criaMapa}}(\textcolor{stringliteral}{"{}mapa.txt"{}},\ Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021\ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Verificar\ se\ a\ lista\ foi\ preenchida\ corretamente}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (Iniciolista\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Nenhuma\ antena\ encontrada!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Lista\ de\ antenas\ ordenadas:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{funcoes_8c_ad5ad8449d8e9c17086eecd7182fee2fe}{exibirLista}}(Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029\ \ \textcolor{comment}{//\ \ \ Iniciolista=inserirAntena(Iniciolista,'A',3,3);\ }}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Calcular\ efeitos\ nefastos\ e\ exibir\ o\ mapa\ atualizado}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031\ \ \ \ \ IniciolistaEfeito\ =\ \mbox{\hyperlink{funcoes_8c_a0f79a8128b3ef6953884367b9e4e1799}{calcularEfeitoNefasto}}(Iniciolista,\ IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nMapa\ com\ efeitos\ nefastos:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_afcbae3699b127f728daf26fd48eca943}{apresentaMapaComEfeito}}(Iniciolista,\ IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034\ \ \ \ \ Iniciolista=\mbox{\hyperlink{funcoes_8c_ad228db92a01e3548fa9c8b098c21b3f7}{removerAntena}}(Iniciolista,5,8);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_ad5ad8449d8e9c17086eecd7182fee2fe}{exibirLista}}(Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Escrever\ a\ lista\ no\ ficheiro\ binário}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_aca81817473cf7f9bae040a3d1b5bc7a7}{imprimirListaNoficheiro}}(Iniciolista,\ \textcolor{stringliteral}{"{}listaligada.bin"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Liberar\ memória\ antes\ de\ substituir\ a\ lista}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_aa41ff1c52299f6ee1d913d7e71083a7f}{limparMemoria}}(Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_a3640123ce16dfb357174173e06225153}{limparMemoriaEfeitoNefasto}}(IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}00044\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046\ \ \ \ \ Iniciolista\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047\ \ \ \ \ IniciolistaEfeito\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048\ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Ler\ lista\ do\ ficheiro\ binário}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050\ \ \ \ \ Iniciolista\ =\ \mbox{\hyperlink{funcoes_8c_af0cded30d2080714d9b3fd06bea7c12b}{lerListaNoFicheiro}}(\textcolor{stringliteral}{"{}listaligada.bin"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}00051\ \ \ \ \ IniciolistaEfeito\ =\ \mbox{\hyperlink{funcoes_8c_a0f79a8128b3ef6953884367b9e4e1799}{calcularEfeitoNefasto}}(Iniciolista,\ IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Exibir\ a\ lista\ lida}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nLista\ lida\ do\ ficheiro\ binário:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_ad5ad8449d8e9c17086eecd7182fee2fe}{exibirLista}}(Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_a305694b49c90a1985e09f1a301e5dca2}{Mostrarmapafinal}}(Iniciolista,IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Libertar\ memória\ no\ final}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_aa41ff1c52299f6ee1d913d7e71083a7f}{limparMemoria}}(Iniciolista);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{funcoes_8c_a3640123ce16dfb357174173e06225153}{limparMemoriaEfeitoNefasto}}(IniciolistaEfeito);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062\ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063\ \ }
+
+\end{DoxyCode}

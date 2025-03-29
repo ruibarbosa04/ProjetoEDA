@@ -1,0 +1,33 @@
+\doxysection{/mnt/c/\+Users/\+Rui Barbosa/\+One\+Drive -\/ Instituto Politécnico do Cávado e do Ave/\+Ambiente de Trabalho/\+EDA/\+TP/dados.h}
+\hypertarget{dados_8h_source}{}\label{dados_8h_source}\mbox{\hyperlink{dados_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00012}00012\ \textcolor{preprocessor}{\ \#include\ <stdio.h>}\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00013}00013\ \textcolor{preprocessor}{\ \#include\ <stdlib.h>}\ \ \ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00015}00015\ \textcolor{comment}{//\ estrtura\ para\ criar\ uma\ lista\ para\ inserir\ antenas}}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00016}\mbox{\hyperlink{structAntena}{00016}}\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structAntena}{Antena}}\ \{}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{char}\ frequencia;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Frequência\ da\ antena\ (ex:\ 'A',\ 'O',\ etc.)}}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ da\ linha\ que\ vai\ pertencer}}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ da\ coluna\ que\ vai\ pertencer\ \ \ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structAntena}{Antena}}*\ proximo;\ \ \textcolor{comment}{//\ Ponteiro\ para\ a\ próxima\ antena\ na\ lista\ ligada}}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00021}00021\ \}\ \mbox{\hyperlink{structAntena}{Antena}};}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00023}00023\ \textcolor{comment}{//\ estrutura\ para\ imrpimir\ num\ ficheiro\ bin,\ nao\ pode\ ter\ ponteiros\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00024}\mbox{\hyperlink{structAntenaFicheiro}{00024}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}}\{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{char}\ frequencia;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ frequencia\ da\ antena\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ da\ linha\ que\ vai\ pertencer\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ da\ coluna\ que\ vai\ pertencer\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00028}00028\ \}\mbox{\hyperlink{structAntenaFicheiro}{AntenaFicheiro}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00031}00031\ \textcolor{comment}{//\ estrtura\ para\ criar\ uma\ lista\ para\ inserir\ efeitos\ nefastos\ causados\ pelas\ antenas\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00032}\mbox{\hyperlink{structEfeitoNefasto}{00032}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}\{}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ de\ linha\ em\ que\ o\ efeito\ nefasto\ se\ encontra\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ numero\ da\ coluna\ em\ que\ o\ efeito\ nefasto\ se\ encontra}}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structAntena}{Antena}}*\ causaDoefeito[2];\ \textcolor{comment}{//\ usei\ um\ array\ pois\ nao\ muda\ de\ tamanho\ ,\ pois\ vai\ receber\ dois\ apontadores\ do\ tipo\ antena\ }}
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}}*\ proximo;\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00037}00037\ \}\mbox{\hyperlink{structEfeitoNefasto}{EfeitoNefasto}};\ }
+\DoxyCodeLine{\Hypertarget{dados_8h_source_l00038}00038\ }
+
+\end{DoxyCode}
