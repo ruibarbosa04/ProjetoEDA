@@ -13,12 +13,13 @@
  #include <stdlib.h>   
 
 // estrtura para criar uma lista para inserir antenas
+
  typedef struct Antena {
-    char frequencia;         // Frequência da antena (ex: 'A', 'O', etc.)
+    char frequencia;         // Frequência da antena 
     int x;                   // numero da linha que vai pertencer
     int y;                   // numero da coluna que vai pertencer   
-    struct Antena* proximo;  // Ponteiro para a próxima antena na lista ligada
-} Antena;
+    struct Antena* proximo;  // apontador para a próxima antena na lista ligada
+}Antena;
 
 // estrutura para imrpimir num ficheiro bin, nao pode ter ponteiros 
 typedef struct AntenaFicheiro{    
@@ -32,7 +33,7 @@ typedef struct AntenaFicheiro{
 typedef struct EfeitoNefasto{
     int x;                           // numero de linha em que o efeito nefasto se encontra 
     int y;                           // numero da coluna em que o efeito nefasto se encontra
-    struct Antena* causaDoefeito[2]; // usei um array pois nao muda de tamanho , pois vai receber dois apontadores do tipo antena 
+    struct Antena* causaDoefeito[2]; // vai receber dois apontadores do tipo antena 
     struct EfeitoNefasto* proximo; 
 }EfeitoNefasto; 
 

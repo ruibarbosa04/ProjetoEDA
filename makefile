@@ -1,35 +1,41 @@
-# Compiler to use
+# Compilador
 CC = gcc
 
-# Compiler flags
+# Flags de compilação
 CFLAGS = -Wall -Wextra -g
 
-# Find all .c files in the current directory
+# Arquivos de código-fonte e headers
 SOURCES = $(wildcard *.c)
-
-# Generate object file names from source files
-OBJECTS = $(SOURCES:.c=.o)
-
-# Header files
 HEADERS = $(wildcard *.h)
 
-# Executable name
+# Objetos correspondentes
+OBJECTS = $(SOURCES:.c=.o)
+
+# Nome do executável e da biblioteca
 TARGET = programa
+LIB_NAME = funcoesLib.a
 
-# Main rule
-all: $(TARGET)
+# Objetos da biblioteca (ajuste esses nomes se mudar os arquivos)
+LIB_OBJECTS = funcoesListas.o funcoesGrafos.o funcoes.o
 
-# Linking rule
+# Regra principal
+all: $(LIB_NAME) $(TARGET)
+
+# Regra para o executável (linka tudo)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Compilation rule - automatically includes all headers
+# Regra para criar a biblioteca estática
+$(LIB_NAME): $(LIB_OBJECTS)
+	ar rcs $(LIB_NAME) $(LIB_OBJECTS)
+
+# Regra para compilar .c em .o (inclui headers automaticamente)
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean rule
+# Limpar os arquivos gerados
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET) $(LIB_NAME)
 
-# Phony targets
+# Alvos que não são arquivos reais
 .PHONY: all clean
