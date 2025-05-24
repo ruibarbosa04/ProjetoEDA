@@ -57,7 +57,8 @@ Vertice* criarVertice(AntenaGrafo *antena, int* res){
  * @param inicioListaVertices 
  * @param res 
  * @return Vertice* 
- */Vertice* inserirVertice(Vertice* novo, Vertice* inicioListaVertices, int* res){
+ */
+Vertice* inserirVertice(Vertice* novo, Vertice* inicioListaVertices, int* res){
     if(novo==NULL){ 
         *res=0;                           // avisa que deu erro 
         return inicioListaVertices;
@@ -246,7 +247,7 @@ Vertice* criaInsereTodasAsAdjacencias(Vertice* inicioListaVertices, int* res){
                         *res=0;
                         return inicioListaVertices;
                     }
-                    Adjacencias* nova2 = criaAdjacencia(aux2,aux1,res);                                      // cria adjacencia de aux2 para aux2 
+                    Adjacencias* nova2 = criaAdjacencia(aux2,aux1,res);                                      // cria adjacencia de aux2 para aux1
                     if(*res != 1){
                     *res=0;
                     return inicioListaVertices; 
@@ -275,7 +276,7 @@ Vertice* criaInsereTodasAsAdjacencias(Vertice* inicioListaVertices, int* res){
  */
 Adjacencias* procuraAdjacencia(Vertice* origem, Vertice* destino, int* res) {
     if (origem == NULL || destino == NULL) {           // verifica se os vértices são válidos
-        *res = 0;
+        *res=0;
         return NULL;
     }
      Adjacencias* aux = origem->listaDeAdjacencias;     // apontador auxiliar para percorrer a lista de adjacências
@@ -283,10 +284,10 @@ Adjacencias* procuraAdjacencia(Vertice* origem, Vertice* destino, int* res) {
         aux = aux->proximo;
     }
     if (aux && aux->destino == destino) {              // se encontrar, retorna a adjacência
-        *res = 0;
+        *res=0;
         return aux;
     }
-    *res = 1;                                           // não encontrou, mas sem erro
+    *res=1;                                           // não encontrou, mas sem erro
     return NULL;
 }
 /**
@@ -543,57 +544,56 @@ Vertice* lerAtravesDoFicheiroBin(char* nomeFicheiro, int* res){
  * @param yDestino 
  * @return int 
  */
- int procuraTodosCaminhosEntreDuasAntenas(Vertice* inicioListaVertices, int xOrigem, int yOrigem, int Xdestino, int yDestino){
-    if(xOrigem==yDestino && yOrigem==yDestino){
+ int procuraTodosCaminhosEntreDuasAntenas(Vertice* inicioListaVertices, int xOrigem, int yOrigem, int Xdestino, int yDestino) {
+    if (xOrigem == Xdestino && yOrigem == yDestino) {
         return 1;
     }
-    
-    Vertice* aux1 = inicioListaVertices;
-    while (aux1!=NULL){
-        aux1->visitado = false;
-        aux1=aux1->proximo;
+    // Marcar todos os vértices como não visitados
+    for (Vertice* v = inicioListaVertices; v != NULL; v = v->proximo) {
+        v->visitado = false;
     }
-    
-    Vertice* origem= inicioListaVertices; 
-    if(origem==NULL){
-        return 0; 
-    }
-    while(origem!=NULL){  // tenta encontrar o vertice com o x e y recebidos nos parametros 
-        if(origem->antena->x == xOrigem && origem->antena->y == yOrigem){
+
+    // Procurar vértice de origem
+    Vertice* origem = NULL;
+    for (Vertice* v = inicioListaVertices; v != NULL; v = v->proximo) {
+        if (v->antena->x == xOrigem && v->antena->y == yOrigem) {
+            origem = v;
             break;
         }
-        origem=origem->proximo;
     }
-    if(origem==NULL){
-        return 0;
-    }
-    Vertice* pilha[MAX_TAMANHO];
-    Adjacencias* caminhos[MAX_TAMANHO];
-    int topo = 0;
-    int totalCaminhos = 0;
 
+    if (origem == NULL) return 0;
+
+    Vertice* pilha[MAX_TAMANHO]; // pilha para armazenar os vertices do caminho atual
+    Adjacencias* caminhos[MAX_TAMANHO]; // array para armazenar o proximo adjacente a ser explorado 
+    int topo = 0;           // indice do topo da pilha 
+    int totalCaminhos = 0;  // contador dos caminhos encontrados 
+
+    // inicializa a pilha com o vestice origem 
     pilha[topo] = origem;
     caminhos[topo] = origem->listaDeAdjacencias;
-    origem->visitado = true;
+    origem->visitado = true;  // marca a origem como visitado 
 
-    while (topo >= 0) {
-        Vertice* atual = pilha[topo];
-        Adjacencias* adj = caminhos[topo];
+    while (topo >= 0) {  // enquanto houver vertices na pilha 
+        Vertice* atual = pilha[topo];  // vertice no topo da pilha 
+        Adjacencias* adj = caminhos[topo];  // proxima adjacencia a explorar 
 
-        if (atual == Xdestino) {
+        // se o vertice atual for o destino , conta um caminhi encontrado 
+        if (atual->antena->x == Xdestino && atual->antena->y == yDestino) {
             totalCaminhos++;
-            atual->visitado = false;
+            atual->visitado = false; // muda o vertice para nao visitado 
             topo--;
-            continue;
+            continue;  // continua a busca 
         }
-
+        // se nao ha mais adjacencias no vertice atual , retrocede (backtracking)
         if (adj == NULL) {
             atual->visitado = false;
             topo--;
             continue;
         }
-
+        // atualiza a proxima adjacencia a explorar 
         caminhos[topo] = adj->proximo;
+        // se o vertice adjacente ainda nao foi visitado , adicona na pilha para explorar 
         if (!adj->destino->visitado) {
             topo++;
             pilha[topo] = adj->destino;
@@ -601,15 +601,5 @@ Vertice* lerAtravesDoFicheiroBin(char* nomeFicheiro, int* res){
             adj->destino->visitado = true;
         }
     }
-
     return totalCaminhos;
 }
-
-
-
-
- 
-
-
-    
-       

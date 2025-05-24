@@ -37,8 +37,6 @@
    int y;                        // numero de coluna que vai pertencer 
  }AntenaGrafo; 
 
-typedef struct Grafo{
-   Vertice* listaDeVertices;
-}Grafo;
+
 
 
