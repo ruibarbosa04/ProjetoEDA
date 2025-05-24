@@ -1,0 +1,43 @@
+# Compilação C/C++
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.obj
+*.dll
+
+# Ficheiros de LaTeX
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Diretórios comuns de build
+build/
+out/
+bin/
+Debug/
+Release/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Outros
+*.bak
+*.tmp
